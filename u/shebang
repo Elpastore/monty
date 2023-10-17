@@ -1,0 +1,5 @@
+#!/bin/bash
+set -o noclobber
+printf '#!/usr/bin/python3\n\n' > $1
+set +o noclobber
+vi $1
