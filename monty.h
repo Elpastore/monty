@@ -57,4 +57,6 @@ char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
 
+void pint(stack_t **stack, unsigned int line_number);
+
 #endif
