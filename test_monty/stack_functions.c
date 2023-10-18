@@ -6,12 +6,25 @@
  * @value: value to be added
  */
 
-void push(stack_t **stack, unsigned int line_number, int value)
+void push(stack_t **stack, unsigned int line_number)
 {
 
-	stack_t *new_node = malloc(sizeof(stack_t));
+	int value;
+	char *arg = strtok(NULL, " \n\t");
+	stack_t *new_node;
 
-	(void)line_number;
+	if (arg == NULL || !is_valid_integer(arg))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		/*free(line);*/
+		/*free_array(tokens);*/
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	value = atoi(arg);
+
+	new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{

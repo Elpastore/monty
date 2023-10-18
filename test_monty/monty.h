@@ -48,7 +48,7 @@ typedef struct
 {
 	struct stack_s *top;
 } Stack;
-void push(stack_t **stack, unsigned int line_number, int value);
+void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
 void execute(FILE *file);
@@ -56,5 +56,8 @@ int is_valid_integer(char *str);
 char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
+int is_valid(stack_t *global_stack,char **tokens, char *line, int line_number);
+
+extern stack_t *global_stack;
 
 #endif
