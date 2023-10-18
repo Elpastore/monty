@@ -5,28 +5,18 @@
  * @stack: pointer to the stack
  * @line_number: the line number of the file
  */
-void add(stack_t **stack, int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
-	/* int sum; */
-	int num_nodes;
+	int sum;
 
-	num_nodes = stack_len(*stack);
-	/* printf("num_nodes1: %i\n", num_nodes); */
-
-	if (stack == NULL || *stack == NULL || num_nodes < 2)
+	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stdout, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	/* sum = (*stack)->n + (*stack)->next->n; */
-	/* pop(stack, line_number); */
-	/* (*stack)->n = sum; */
-
-	(*stack)->next->n += (*stack)->n;
+	sum = (*stack)->next->n + (*stack)->n;
 	pop(stack, line_number);
-
-	/* printf("num_nodes2: %i\n", stack_len(*stack)); */
+	(*stack)->n = sum;
 }
 
 /**
@@ -64,4 +54,26 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 }
+/**
+ * divide - function that div second top element by the top element of the stack.
+ * @stack: pointer to the stack
+ * @line_number: line number in the file
+ */
+void divide(stack_t **stack, unsigned int line_number)
+{
+	int div;
 
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	div = (*stack)->next->n / (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = div;
+}

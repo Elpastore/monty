@@ -45,10 +45,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-typedef struct
-{
-	struct stack_s *top;
-} Stack;
 void push(stack_t **stack, unsigned int line_number, int value);
 void pall(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);
@@ -58,8 +54,9 @@ char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
 void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
 
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
