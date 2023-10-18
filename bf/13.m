@@ -1,7 +1,7 @@
 push 1
 push 2
 push 25
-push 5
+push 4
 pall
-div
+mod
 pall
