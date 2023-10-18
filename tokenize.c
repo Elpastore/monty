@@ -6,7 +6,7 @@
  */
 char **tokenize(char *line)
 {
-	char *token,**tokens;
+	char *token, **tokens;
 	int i = 0, numb_tok;
 
 	numb_tok = find_tok_numb(line);
@@ -29,6 +29,6 @@ char **tokenize(char *line)
 		token = strtok(NULL, " \t\n");
 	}
 	tokens[i] = NULL;
-		
+
 	return (tokens);
 }
