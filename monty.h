@@ -56,5 +56,6 @@ int is_valid_integer(char *str);
 char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
+void swap(stack_t **stack, unsigned int line_number);
 
 #endif
