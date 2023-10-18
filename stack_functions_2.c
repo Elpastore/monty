@@ -7,11 +7,11 @@
  */
 void add(stack_t **stack, int line_number)
 {
-	int sum;
+	/* int sum; */
 	int num_nodes;
 
 	num_nodes = stack_len(*stack);
-	/* printf("num_nodes: %i\n", num_nodes); */
+	/* printf("num_nodes1: %i\n", num_nodes); */
 
 	if (stack == NULL || *stack == NULL || num_nodes < 2)
 	{
@@ -19,9 +19,14 @@ void add(stack_t **stack, int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	sum = (*stack)->n + (*stack)->next->n;
+	/* sum = (*stack)->n + (*stack)->next->n; */
+	/* pop(stack, line_number); */
+	/* (*stack)->n = sum; */
+
+	(*stack)->next->n += (*stack)->n;
 	pop(stack, line_number);
-	(*stack)->n = sum;
+
+	/* printf("num_nodes2: %i\n", stack_len(*stack)); */
 }
 
 /**
