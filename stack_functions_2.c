@@ -6,16 +6,14 @@
  */
 void add(stack_t **stack, int line_number)
 {
-	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stdout, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	sum = (*stack)->n + (*stack)->next->n;
+	(*stack)->next->n += (*stack)->n;
 	pop(stack, line_number);
-	(*stack)->n = sum;
 }
 /**
  * pop - reoves the top elemtn of the stack
@@ -42,3 +40,14 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	free(current);
 }
+/**
+ * nop - nop opcode implementation
+ * @stack: pointer to the stack
+ * @line_number: line number in the file
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
+
