@@ -29,12 +29,14 @@ void execute(FILE *file)
 				/*free(value_str);*/
 				exit(EXIT_FAILURE);
 			}
-	
+
 			value = atoi(value_str);
 			push(&stack, line_number, value);
 		}
 		else if (strcmp(tokens[0], "pall") == 0)
 			pall(&stack, line_number);
+		else if (strcmp(tokens[0], "pint") == 0)
+			pint(&stack, line_number);
 		else
 		{
 			/*Unknown opcode*/

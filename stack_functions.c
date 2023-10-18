@@ -63,3 +63,26 @@ void free_stack(stack_t **stack)
 		free(temp);
 	}
 }
+
+/**
+ * pint - prints the value at the top of the stack, then newline
+ * @stack: the pointer to the stack  items
+ * @line_number: line number of the monty file
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	if (*stack == NULL)
+	{
+		return;
+	}
+	if (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
+}
+
