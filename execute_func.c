@@ -43,6 +43,8 @@ void execute(FILE *file)
 			pint(&stack, line_number);
 		else if (strcmp(tokens[0], "pop") == 0)
 			pop(&stack, line_number);
+		else if (strcmp(tokens[0], "add") == 0)
+			add(&stack, line_number);
 
 		else
 		{
