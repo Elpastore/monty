@@ -47,7 +47,28 @@ void pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 }
+/**
+ * swap - function that swap two element of the the stack
+ * @stack: pointer to the stack
+ * @line_number: the line number in the file
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int n1, n2;
 
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	n1 = (*stack)->n;
+	n2 = (*stack)->next->n;
+
+	(*stack)->n = n2;
+	(*stack)->next->n = n1;
+}
 /**
  * free_stack - function to free the stack.
  * @stack: the pointer to the stack  items

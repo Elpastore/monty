@@ -35,10 +35,15 @@ void execute(FILE *file)
 		}
 		else if (strcmp(tokens[0], "pall") == 0)
 			pall(&stack, line_number);
+
+		else if (strcmp(tokens[0], "swap") == 0)
+			swap(&stack, line_number);
+
 		else if (strcmp(tokens[0], "pint") == 0)
 			pint(&stack, line_number);
 		else if (strcmp(tokens[0], "pop") == 0)
 			pop(&stack, line_number);
+
 		else
 		{
 			/*Unknown opcode*/
