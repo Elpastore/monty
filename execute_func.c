@@ -47,6 +47,8 @@ void execute(FILE *file)
 			add(&stack, line_number);
 		else if (strcmp(tokens[0], "nop") == 0)
 			nop(&stack, line_number);
+		else if (strcmp(tokens[0], "div") == 0)
+			divide(&stack, line_number);
 
 		else
 		{
