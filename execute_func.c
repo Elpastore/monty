@@ -45,6 +45,8 @@ void execute(FILE *file)
 			pop(&stack, line_number);
 		else if (strcmp(tokens[0], "add") == 0)
 			add(&stack, line_number);
+		else if (strcmp(tokens[0], "nop") == 0)
+			nop(&stack, line_number);
 
 		else
 		{
