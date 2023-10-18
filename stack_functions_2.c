@@ -55,7 +55,7 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 }
 /**
- * divide - function that div second top element by the top element of the stack.
+ * divide - function that div second top by the top element of the stack.
  * @stack: pointer to the stack
  * @line_number: line number in the file
  */
@@ -63,7 +63,7 @@ void divide(stack_t **stack, unsigned int line_number)
 {
 	int div;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -76,4 +76,28 @@ void divide(stack_t **stack, unsigned int line_number)
 	div = (*stack)->next->n / (*stack)->n;
 	pop(stack, line_number);
 	(*stack)->n = div;
+}
+/**
+ * modulo -performs the modulo op of the second by first top of stack
+ * @stack: pointer to the stack
+ * @line_number: line number of the file
+ */
+void modulo(stack_t **stack, unsigned int line_number)
+{
+	int mod;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	mod = (*stack)->next->n % (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n = mod;
 }

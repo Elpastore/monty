@@ -54,6 +54,9 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "div") == 0)
 			divide(&stack, line_number);
 
+		else if (strcmp(tokens[0], "mod") == 0)
+			modulo(&stack, line_number);
+
 		else
 		{
 			/*Unknown opcode*/
