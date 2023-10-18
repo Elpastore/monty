@@ -6,47 +6,47 @@
 void execute(FILE *file)
 {
 	size_t len = 0;
-	char *line = NULL, *value_str;
+	char *line = NULL;
 	unsigned int line_number = 1;
-	char **tokens;
-	int value;
-	stack_t *stack = NULL;
+	char *token;
+	stack_t *global_stack = NULL;
+	int i = 0;
+
+	instruction_t instructions[] =
+	{
+		{"push", push},
+		{"pall", pall},
+		/* Add more opcodes as needed */
+		{NULL, NULL}
+	};
 
 	while (getline(&line, &len, file) != -1)
 	{
-		tokens = tokenize(line);
-		if (tokens == NULL) /*Empty line*/
+		token = strtok(line, " \t\n");
+		if (token == NULL || token[0] == '#') /*Empty line or comments*/
 			continue;
-		if (strcmp(tokens[0], "push") == 0)
+		
+		while (instructions[i].opcode)
 		{
-			value_str = tokens[1];
-			if (value_str == NULL || !is_valid_integer(value_str))
+			if (strcmp(token, instructions[i].opcode) == 0)
 			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				free(line);
-				free_array(tokens);
-				free_stack(&stack);
-				free(value_str);
-				exit(EXIT_FAILURE);
+				instructions[i].f(&global_stack, line_number);
+				break;
 			}
-	
-			value = atoi(value_str);
-			push(&stack, line_number, value);
+			i++;
 		}
-		else if (strcmp(tokens[0], "pall") == 0)
-			pall(&stack, line_number);
-		else
+
+		/* Handle unknown instruction*/
+		if (!instructions[i].opcode)
 		{
-			/*Unknown opcode*/
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
 			free(line);
-			free_stack(&stack);
-			free_array(tokens);
+			free_stack(&global_stack);
+			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 		line_number++;
-		free_array(tokens);
 	}
 	free(line);
-	free_stack(&stack);
+	free_stack(&global_stack);
 }

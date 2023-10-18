@@ -63,6 +63,7 @@ void execute_script(const char *script_path)
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 			free(line);
 			free_stack(global_stack);
+			global_stack = NULL;
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
@@ -71,5 +72,6 @@ void execute_script(const char *script_path)
 	/*Clean up and close the file*/
 	free(line);
 	free_stack(global_stack);
+	global_stack = NULL;
 	fclose(file);
 }

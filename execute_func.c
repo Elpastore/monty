@@ -26,7 +26,7 @@ void execute(FILE *file)
 				free(line);
 				free_array(tokens);
 				free_stack(&stack);
-				free(value_str);
+				/*free(value_str);*/
 				exit(EXIT_FAILURE);
 			}
 	
