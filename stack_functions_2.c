@@ -24,23 +24,21 @@ void add(stack_t **stack, int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
+	stack_t *current;
 
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop and empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
-		/*return;*/
-	}
-	if (current != NULL)
-	{
-		*stack = current->next;
-		if (*stack != NULL)
-		{
-			(*stack)->prev = NULL;
-		}
-		free(current);
-		/*return;*/
 	}
 
+	current = *stack;
+	*stack = current->next;
+	
+	if (*stack != NULL)
+	{
+		(*stack)->prev = NULL;
+	}
+
+	free(current);
 }
