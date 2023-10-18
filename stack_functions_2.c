@@ -8,7 +8,7 @@ void add(stack_t **stack, int line_number)
 {
 	int sum;
 
-	if (stack == NULL || *stack== NULL || stack->next == NULL)
+	if (stack == NULL || *stack== NULL || (*stack)->next == NULL)
 	{
 		fprintf(stdout, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

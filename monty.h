@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <sys/types.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -57,5 +58,8 @@ char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
 void swap(stack_t **stack, unsigned int line_number);
+
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif
