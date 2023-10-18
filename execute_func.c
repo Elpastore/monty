@@ -41,12 +41,16 @@ void execute(FILE *file)
 
 		else if (strcmp(tokens[0], "pint") == 0)
 			pint(&stack, line_number);
+
 		else if (strcmp(tokens[0], "pop") == 0)
 			pop(&stack, line_number);
+
 		else if (strcmp(tokens[0], "add") == 0)
 			add(&stack, line_number);
+
 		else if (strcmp(tokens[0], "nop") == 0)
 			nop(&stack, line_number);
+
 		else if (strcmp(tokens[0], "div") == 0)
 			divide(&stack, line_number);
 
