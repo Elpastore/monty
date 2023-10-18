@@ -13,18 +13,15 @@ void add(stack_t **stack, int line_number)
 	num_nodes = stack_len(*stack);
 	/* printf("num_nodes: %i\n", num_nodes); */
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL || num_nodes < 2)
+	if (stack == NULL || *stack == NULL || num_nodes < 2)
 	{
 		fprintf(stdout, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	sum = (*stack)->n + (*stack)->next->n;
-	/* printf("0stack->n %i\n0stack->next->n %i\n0sum %i\n", (*stack)->n, (*stack)->next->n, sum); */
 	pop(stack, line_number);
-	/* printf("1stack->n %i\n1stack->next->n %i\n1sum %i\n", (*stack)->n, (*stack)->next->n, sum); */
 	(*stack)->n = sum;
-	/* printf("2stack->n %i\n2stack->next->n %i\n2sum %i\n", (*stack)->n, (*stack)->next->n, sum); */
 }
 
 /**
