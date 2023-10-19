@@ -30,6 +30,7 @@ void execute(FILE *file)
 		tokens = tokenize(line);
 		if (tokens == NULL) /*Empty line*/
 			continue;
+
 		if (strcmp(tokens[0], "push") == 0)
 		{
 			value_str = tokens[1];
@@ -46,49 +47,49 @@ void execute(FILE *file)
 			value = atoi(value_str);
 			push(&stack, line_number, value);
 		}
-		else if (strcmp(tokens[0], "pall") == 0)
-			pall(&stack, line_number);
+		/* else if (strcmp(tokens[0], "pall") == 0) */
+		/* 	pall(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "swap") == 0)
-			swap(&stack, line_number);
+		/* else if (strcmp(tokens[0], "swap") == 0) */
+		/* 	swap(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "pint") == 0)
-			pint(&stack, line_number);
+		/* else if (strcmp(tokens[0], "pint") == 0) */
+		/* 	pint(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "pop") == 0)
-			pop(&stack, line_number);
+		/* else if (strcmp(tokens[0], "pop") == 0) */
+		/* 	pop(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "add") == 0)
-			add(&stack, line_number);
+		/* else if (strcmp(tokens[0], "add") == 0) */
+		/* 	add(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "nop") == 0)
-			nop(&stack, line_number);
+		/* else if (strcmp(tokens[0], "nop") == 0) */
+		/* 	nop(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "sub") == 0)
-			sub(&stack, line_number);
+		/* else if (strcmp(tokens[0], "sub") == 0) */
+		/* 	sub(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "div") == 0)
-			divide(&stack, line_number);
+		/* else if (strcmp(tokens[0], "div") == 0) */
+		/* 	divide(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "mul") == 0)
-			mul(&stack, line_number);
+		/* else if (strcmp(tokens[0], "mul") == 0) */
+		/* 	mul(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "mod") == 0)
-			modulo(&stack, line_number);
+		/* else if (strcmp(tokens[0], "mod") == 0) */
+		/* 	modulo(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "pchar") == 0)
-			pchar(&stack, line_number);
+		/* else if (strcmp(tokens[0], "pchar") == 0) */
+		/* 	pchar(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "rotl") == 0)
-			rotl(&stack, line_number);
+		/* else if (strcmp(tokens[0], "rotl") == 0) */
+		/* 	rotl(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "pstr") == 0)
-			pstr(&stack, line_number);
+		/* else if (strcmp(tokens[0], "pstr") == 0) */
+		/* 	pstr(&stack, line_number); */
 
-		else if (strcmp(tokens[0], "rotr") == 0)
-			rotr(&stack, line_number);
+		/* else if (strcmp(tokens[0], "rotr") == 0) */
+		/* 	rotr(&stack, line_number); */
 
-		else
+		else if (select_opcodes(tokens, &stack, line_number) == 1)
 		{
 			/*Unknown opcode*/
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
