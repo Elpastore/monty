@@ -53,6 +53,8 @@ int is_valid_integer(char *str);
 char **tokenize(char *line);
 int find_tok_numb(char *line);
 void free_array(char **tokens);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
@@ -61,8 +63,8 @@ void divide(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void modulo(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 int stack_len(const stack_t *head);
 
 
