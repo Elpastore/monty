@@ -65,6 +65,7 @@ void modulo(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 int stack_len(const stack_t *head);
 
 
