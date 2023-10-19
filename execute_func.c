@@ -16,6 +16,14 @@ void execute(FILE *file)
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
+		if (line == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			free(line);
+			free_stack(&stack);
+			fclose(file);
+			exit(EXIT_FAILURE);
+		}
 		tokens = tokenize(line);
 		if (tokens == NULL) /*Empty line*/
 			continue;
@@ -70,14 +78,16 @@ void execute(FILE *file)
 
 		else if (strcmp(tokens[0], "pchar") == 0)
 			pchar(&stack, line_number);
+		else if (strcmp(tokens[0], "rotl") == 0)
+			rotl(&stack, line_number);
 
 		else
 		{
 			/*Unknown opcode*/
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
 			free(line);
-			free_stack(&stack);
 			free_array(tokens);
+			free_stack(&stack);
 			exit(EXIT_FAILURE);
 		}
 		/* line_number++; */

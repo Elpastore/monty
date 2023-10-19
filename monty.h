@@ -64,6 +64,7 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 int stack_len(const stack_t *head);
+void rotl(stack_t **stack, unsigned int line_number);
 
 
 #endif
