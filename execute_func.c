@@ -50,6 +50,16 @@ void execute(FILE *file)
 			value = atoi(value_str);
 			push(&stack, line_number, value);
 		}
+		else if (strcmp(tokens[0], "stack") == 0)
+		{
+			stack_op(&stack, line_number);
+		}
+		else if (strcmp(tokens[0], "queue") == 0)
+		{
+			queue_op(&stack, line_number);
+		}
+		else if (strcmp(tokens[0], "pall") == 0)
+			pall(&stack, line_number);
 		/* else if (strcmp(tokens[0], "pall") == 0) */
 		/* 	pall(&stack, line_number); */
 
