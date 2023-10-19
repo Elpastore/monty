@@ -8,17 +8,19 @@ void pchar(stack_t **stack, unsigned int line_number)
 {
 	int letter;
 
-	if (*stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	letter = (*stack)->n;
 
 	if (letter < 0 || letter > 127)
 	{
-		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
+		free_stack(stack);
 	}
 	fprintf(stdout, "%c\n", letter);
 }
@@ -60,7 +62,34 @@ void mul(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = product;
 }
+/**
+ * rotl - function that rotates the stack to the top.
+ * @stack: pointer to the stack
+ * @line_number: line number of the file
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int value_1;
 
+	(void)line_number;
+
+	temp = *stack;
+	if (temp != NULL)
+		value_1 = temp->n;
+	while (temp != NULL)
+	{
+		if (temp->next != NULL)
+		{
+			temp->n = temp->next->n;
+		}
+		else
+		{
+			temp->n = value_1;
+		}
+		temp = temp->next;
+	}
+}
 /**
  * pstr - function that print the first char of the top
  * @stack: pointer to the stack
@@ -79,31 +108,6 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 
 	fprintf(stdout, "\n");
-}
-
-
-/**
- * rotr - function that rotates the stack to the bottom
- * @stack: pointer to the stack
- * @line_number: line number in the file
- */
-void rotr(stack_t **stack, unsigned int line_number)
-{
-	stack_t *lastNode;
-
-	(void)line_number;
-	if (*stack == NULL || (*stack)->prev == NULL)
-	{
-		return;
-	}
-
-	lastNode = (*stack)->prev;
-
-	lastNode->prev->next = NULL;
-	lastNode->prev = NULL;
-	lastNode->next = *stack;
-	(*stack)->prev = lastNode;
-	*stack = lastNode;
 }
 
 
