@@ -19,6 +19,7 @@ void execute(FILE *file)
 		line_number++;
 		if (line == NULL)
 		{
+			fflush(stdout);
 			fprintf(stderr, "Error: malloc failed\n");
 			free(line);
 			free_stack(&stack);
@@ -36,7 +37,9 @@ void execute(FILE *file)
 			value_str = tokens[1];
 			if (value_str == NULL || !is_valid_integer(value_str))
 			{
+				fflush(stdout);
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				/* fflush(stderr); */
 				free(line);
 				free_array(tokens);
 				free_stack(&stack);
@@ -92,6 +95,7 @@ void execute(FILE *file)
 		else if (select_opcodes(tokens, &stack, line_number) == 1)
 		{
 			/*Unknown opcode*/
+			fflush(stdout);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
 			free(line);
 			free_array(tokens);
