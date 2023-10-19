@@ -61,7 +61,6 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void divide(stack_t **stack, unsigned int line_number)
 {
-	int div;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
@@ -73,9 +72,8 @@ void divide(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	div = (*stack)->next->n / (*stack)->n;
+	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line_number);
-	(*stack)->n = div;
 }
 /**
  * modulo -performs the modulo op of the second by first top of stack
@@ -84,7 +82,6 @@ void divide(stack_t **stack, unsigned int line_number)
  */
 void modulo(stack_t **stack, unsigned int line_number)
 {
-	int mod;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
@@ -97,7 +94,6 @@ void modulo(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	mod = (*stack)->next->n % (*stack)->n;
+	(*stack)->next->n %= (*stack)->n;
 	pop(stack, line_number);
-	(*stack)->n = mod;
 }

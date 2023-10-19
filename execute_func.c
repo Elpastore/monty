@@ -56,6 +56,8 @@ void execute(FILE *file)
 
 		else if (strcmp(tokens[0], "mod") == 0)
 			modulo(&stack, line_number);
+		else if (strcmp(tokens[0], "pchar") == 0)
+			pchar(&stack, line_number);
 
 		else
 		{
