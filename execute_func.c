@@ -26,7 +26,7 @@ void execute(FILE *file)
 			exit(EXIT_FAILURE);
 		}
 		tokens = tokenize(line);
-		if (tokens == NULL) /*Empty line*/
+		if (tokens == NULL || tokens[0][0] == '#') /*Empty line*/
 			continue;
 		if (strcmp(tokens[0], "push") == 0)
 		{
@@ -74,14 +74,9 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "mod") == 0)
 			modulo(&stack, line_number);
 
-		else if (strncmp(tokens[0], "#", 1) == 0)
-		{
-			/* line_number--; /1* Do we count the line numbers or not *1/ */
-			continue;
-		}
-
 		else if (strcmp(tokens[0], "pchar") == 0)
 			pchar(&stack, line_number);
+
 		else if (strcmp(tokens[0], "rotl") == 0)
 			rotl(&stack, line_number);
 
