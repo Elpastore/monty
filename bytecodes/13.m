@@ -1,6 +1,7 @@
 push 1
 push 2
-push -3000000
+push 25
+push 4
 pall
-add
+mod
 pall
