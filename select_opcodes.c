@@ -1,5 +1,14 @@
 #include "monty.h"
 
+/**
+ * select_opcodes - selects the correct opcode
+ * @tokens: tokens array containing instructions
+ * @stack: the pointer to the stack  items
+ * @line_number: line number of the monty file
+ *
+ * Return: 0 on success, 1 on failure
+ */
+
 
 int select_opcodes(char **tokens, stack_t **stack, unsigned int line_number)
 {

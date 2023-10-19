@@ -69,6 +69,7 @@ void rotr(stack_t **stack, unsigned int line_number);
 int stack_len(const stack_t *head);
 void rotl(stack_t **stack, unsigned int line_number);
 int select_opcodes(char **tokens, stack_t **stack, unsigned int line_number);
+void free_close_exit(char *line, stack_t *stack, FILE *file);
 
 
 #endif
