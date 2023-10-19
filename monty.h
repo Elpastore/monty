@@ -71,6 +71,7 @@ void rotl(stack_t **stack, unsigned int line_number);
 void stack_op(stack_t **stack, unsigned int line_number);
 void queue_op(stack_t **stack, unsigned int line_number);
 int select_opcodes(char **tokens, stack_t **stack, unsigned int line_number);
+void free_close_exit(char *line, stack_t *stack, FILE *file);
 
 extern int mode;
 
