@@ -68,7 +68,7 @@ void execute(FILE *file)
 
 		else if (strncmp(tokens[0], "#", 1) == 0)
 		{
-			line_number--; /* Do we count the line numbers or not */
+			/* line_number--; /1* Do we count the line numbers or not *1/ */
 			continue;
 		}
 
