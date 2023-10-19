@@ -15,6 +15,7 @@ void execute(FILE *file)
 
 	while (getline(&line, &len, file) != -1)
 	{
+		/* printf("line(%i)\n", line_number); */
 		line_number++;
 		tokens = tokenize(line);
 		if (tokens == NULL) /*Empty line*/
@@ -65,9 +66,9 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "mod") == 0)
 			modulo(&stack, line_number);
 
-		else if (strcmp(tokens[0], "#") == 0)
+		else if (strncmp(tokens[0], "#", 1) == 0)
 		{
-			line_number--;
+			line_number--; /* Do we count the line numbers or not */
 			continue;
 		}
 
