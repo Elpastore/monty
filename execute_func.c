@@ -25,8 +25,10 @@ void execute(FILE *file)
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
+		if (line[0] == '#')
+			continue;
 		tokens = tokenize(line);
-		if (tokens == NULL || tokens[0][0] == '#') /*Empty line*/
+		if (tokens == NULL) /*Empty line*/
 			continue;
 		if (strcmp(tokens[0], "push") == 0)
 		{
