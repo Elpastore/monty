@@ -1,4 +1,5 @@
 #include "monty.h"
+int mode = 0; /* Intialize as stack mode by defauld*/
 /**
  * push - function that add items at the top af the stack
  * @stack: the pointer to the stack  items
@@ -9,6 +10,7 @@
 void push(stack_t **stack, unsigned int line_number, int value)
 {
 
+	stack_t *current;
 	stack_t *new_node = malloc(sizeof(stack_t));
 
 	(void)line_number;
@@ -22,11 +24,36 @@ void push(stack_t **stack, unsigned int line_number, int value)
 	}
 	new_node->n = value;
 	new_node->prev = NULL;
-	new_node->next = *stack;
+	
+	if (mode == 0)
+	{
+		/* Stack mode LIFO*/
+		new_node->next = *stack;
 
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-	*stack = new_node;
+		if (*stack != NULL)
+			(*stack)->prev = new_node;
+		*stack = new_node;
+	}
+	else
+	{
+		/*Queue mode FIFO*/
+		current = *stack;
+		if (current != NULL)
+		{
+			while (current->next != NULL)
+			{
+				current = current->next;
+			}
+			current->next = new_node;
+			new_node->next = NULL;
+			new_node->prev = current;
+		}
+		else
+		{
+			*stack = new_node;
+			new_node->next = NULL;
+		}
+	}
 }
 /**
  * pall - function that print stack's items
