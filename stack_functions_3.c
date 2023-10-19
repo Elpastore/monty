@@ -90,3 +90,22 @@ void rotl(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+/**
+ * pstr - function that print the first char of the top
+ * @stack: pointer to the stack
+ * @line_number: line number in the file
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *letter = *stack;
+
+	(void) line_number;
+
+	while (letter != NULL && letter->n > 0 && letter->n < 128)
+	{
+		fprintf(stdout, "%c", letter->n);
+		letter = letter->next;
+	}
+
+	fprintf(stdout, "\n");
+}
