@@ -75,6 +75,9 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "pchar") == 0)
 			pchar(&stack, line_number);
 
+		else if (strcmp(tokens[0], "pstr") == 0)
+			pstr(&stack, line_number);
+
 		else
 		{
 			/*Unknown opcode*/
