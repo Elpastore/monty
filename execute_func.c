@@ -83,6 +83,9 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "pstr") == 0)
 			pstr(&stack, line_number);
 
+		else if (strcmp(tokens[0], "rotr") == 0)
+			rotr(&stack, line_number);
+
 		else
 		{
 			/*Unknown opcode*/
