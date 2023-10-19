@@ -7,13 +7,15 @@ void execute(FILE *file)
 {
 	size_t len = 0;
 	char *line = NULL, *value_str;
-	unsigned int line_number = 1;
+	/* unsigned int line_number = 1; */
+	unsigned int line_number = 0;
 	char **tokens;
 	int value;
 	stack_t *stack = NULL;
 
 	while (getline(&line, &len, file) != -1)
 	{
+		line_number++;
 		tokens = tokenize(line);
 		if (tokens == NULL) /*Empty line*/
 			continue;
@@ -48,17 +50,24 @@ void execute(FILE *file)
 		else if (strcmp(tokens[0], "add") == 0)
 			add(&stack, line_number);
 
-		else if (strcmp(tokens[0], "sub") == 0)
-			sub(&stack, line_number);
-
 		else if (strcmp(tokens[0], "nop") == 0)
 			nop(&stack, line_number);
+
+		else if (strcmp(tokens[0], "sub") == 0)
+			sub(&stack, line_number);
 
 		else if (strcmp(tokens[0], "div") == 0)
 			divide(&stack, line_number);
 
+		else if (strcmp(tokens[0], "mul") == 0)
+			mul(&stack, line_number);
+
 		else if (strcmp(tokens[0], "mod") == 0)
 			modulo(&stack, line_number);
+
+		else if (strcmp(tokens[0], "#") == 0)
+			continue;
+
 		else if (strcmp(tokens[0], "pchar") == 0)
 			pchar(&stack, line_number);
 
@@ -71,7 +80,7 @@ void execute(FILE *file)
 			free_array(tokens);
 			exit(EXIT_FAILURE);
 		}
-		line_number++;
+		/* line_number++; */
 		free_array(tokens);
 	}
 	free(line);
